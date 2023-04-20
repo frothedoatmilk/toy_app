@@ -10,5 +10,17 @@
   <%= @user.name %>
 </p>
 
+<p>
+  <strong>Contributions to this board:</strong><br>
+  <%if !@user.microposts.empty? then%>
+    <%@user.microposts.each do |post|%>
+      <li>On <%= post.created_at%>:<br>
+      >> <%= post.content %>
+    <% end %>
+  <% else %>
+    Nothing posted!
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
